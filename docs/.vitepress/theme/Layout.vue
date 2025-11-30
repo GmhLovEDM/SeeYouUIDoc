@@ -19,11 +19,10 @@ const { Layout } = DefaultTheme;
 const { frontmatter } = useData();
 const route = useRoute();
 
-// 演示站点的基准 URL (你需要替换成你自己的 H5 项目地址)
+// 演示站点的基准 URL
 const BASE_URL = "http://113.44.242.235:9001/#";
 
 // 根据当前文档路径，计算 iframe 应该显示的 URL
-// 假设文档路径是 /components/button，演示路径对应 /pages/components/button
 const iframeUrl = computed(() => {
   // 1. 优先使用 markdown 文件头部的 frontmatter 配置 (如果有)
   if (frontmatter.value.iframeSrc) {
@@ -31,7 +30,6 @@ const iframeUrl = computed(() => {
   }
 
   // 2. 否则根据路由自动推导
-  // 比如去掉 .html 后缀，拼接基准路径
   const path = route.path.replace(".html", "");
   return `${BASE_URL}${path}`;
 });
@@ -45,13 +43,11 @@ const showPhone = computed(() => {
 </script>
 
 <style scoped>
-/* 这里是关键样式，让它悬浮在右侧 */
 .mobile-preview-wrapper {
-  position: fixed; /* ← 这里是关键 */
-  right: 24px;
-  top: 90px; /* 避开顶部导航（可以自己调） */
+  position: fixed;
+  right: max(24px, calc((100vw - var(--vp-layout-max-width, 1920px)) / 2 + 24px));
+  top: 90px;
   z-index: 10;
-  width: 400px;
   display: none;
 }
 
@@ -62,8 +58,8 @@ const showPhone = computed(() => {
 }
 
 .mobile-mockup {
-  width: 400px; /* iframe 实际宽度 */
-  height: 790px; /* iframe 实际高度 */
+  width: 400px;
+  height: 790px;
   border-radius: 30px;
   overflow: hidden;
   background: url("./static/iPhone13.png") no-repeat center center;

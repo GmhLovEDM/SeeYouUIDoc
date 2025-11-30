@@ -1,6 +1,6 @@
 /* docs/.vitepress/theme/style.css */
 :root {
-  --vp-layout-max-width: 100% !important; /* 全局最大宽度 */
+  --vp-layout-max-width: 1920px !important; /* 全局最大宽度 */
 
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(120deg, #bd34fe, #41d1ff);
@@ -19,14 +19,6 @@
 }
 
 @media (min-width: 1400px) {
-  /* 调整 VitePress 内容区域的宽度，给右侧 iframe 腾出空间 */
-  .VPDoc:not(.has-sidebar) .container,
-  .VPDoc .container {
-    max-width: 1200px !important; /* 限制中间文档的最大宽度 */
-    margin-right: 340px !important; /* 右侧留出空间 */
-    margin-left: auto !important;
-  }
-
   /* 如果有右侧目录栏 (Outline)，可能需要进一步调整或隐藏 */
   .VPDoc .aside {
     display: none; /* 简单粗暴的方法：如果显示了手机，就隐藏右侧目录 */
@@ -75,84 +67,9 @@ body {
   display: table;
   table-layout: fixed !important;
 }
-@media (max-width: 1500px), (max-width: 1600px), (max-width: 1700px) {
-  .mobile-mockup {
-    transform: scale(0.85);
-    transform-origin: top right;
-  }
-}
-
-/* 📌 浏览器缩放约 90%（≈ 86dpi） */
-@media (min-resolution: 82dpi) and (max-resolution: 90dpi) {
-  .mobile-mockup {
-    transform-origin: top right;
-    transform: scale(1.1); /* 等于 1 / 0.9 */
-    position: relative;
-    right: -8px; /* 可按实际微调 */
-  }
-}
-
-/* 📌 浏览器缩放约 80%（≈ 77dpi） */
-@media (min-resolution: 73dpi) and (max-resolution: 80dpi) {
-  .mobile-mockup {
-    transform-origin: top right;
-    transform: scale(1.2); /* 等于 1 / 0.8 */
-    position: relative;
-    right: -10px;
-  }
-}
-
-/* 📌 浏览器缩放约 75%（≈ 72dpi） */
-@media (min-resolution: 68dpi) and (max-resolution: 73dpi) {
-  .mobile-mockup {
-    transform-origin: top right;
-    transform: scale(1.26); /* 等于 1 / 0.75 */
-    position: relative;
-    right: -12px;
-  }
-}
-
-/* 📌 浏览器缩放约 110% */
-@media (min-resolution: 105dpi) and (max-resolution: 115dpi) {
-  /* 在 110% 左右时触发 */
-  .mobile-mockup {
-    transform-origin: top right;
-    transform: scale(0.89);
-    position: relative;
-    right: 24px;
-  }
-}
-
-/* 📌 浏览器缩放约 125% */
-@media (min-resolution: 118dpi) and (max-resolution: 125dpi) {
-  /* 在 125% 时触发 */
-  .mobile-mockup {
-    transform-origin: top right;
-    transform: scale(0.77);
-    position: relative;
-    right: 20px;
-  }
-}
 
 .VPNavBar {
   .wrapper {
     padding: 0;
   }
-}
-
-/* 强制显示 Return to top（兼容多种 class 命名） */
-.vp-return-to-top,
-.VPReturnToTop,
-.vpReturnToTop,
-.return-to-top,
-button[aria-label="Return to top"],
-button[aria-label="返回顶部"] {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transform: translateY(0) !important;
-  transition: none !important;
-  bottom: 24px !important;
-  right: 24px !important;
-  z-index: 9999 !important;
 }
